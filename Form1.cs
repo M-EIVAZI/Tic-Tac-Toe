@@ -10,7 +10,8 @@ namespace Tic_Tac_Toe
         }
         private GameCell[,] cells = new GameCell[3, 3];
         private void Fill_Empty()
-        { for (int i = 0; i < 3; i++)
+        {
+            for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
                     cells[i, j].Value = ' ';
 
@@ -39,7 +40,7 @@ namespace Tic_Tac_Toe
             }
             Fill_Empty();
         }
-        private void cell_keyPressed(object sender, KeyPressEventArgs e) 
+        private void cell_keyPressed(object sender, KeyPressEventArgs e)
         {
             var cell = sender as GameCell;
             if (!char.IsDigit(e.KeyChar) && e.KeyChar == 'x')
@@ -54,10 +55,18 @@ namespace Tic_Tac_Toe
         private void button11_Click(object sender, EventArgs e)
         {
             Choose_Move();
+            //int? result = EvaluateBoard(cells);
+            //if (result == -1)
+            //    MessageBox.Show("You Won!");
+            //if (result == 1)
+            //    MessageBox.Show("You Lose!");
+            //if (result == 0)
+            //    MessageBox.Show("Tie");
+
         }
         private bool Is_win(Char player, GameCell[,] current)
         {
-           
+
             for (int i = 0; i < 3; i++)
             {
                 if ((current[i, 0].Value == player && current[i, 1].Value == player && current[i, 2].Value == player) || (current[0, i].Value == player && current[1, i].Value == player && current[2, i].Value == player))
@@ -81,7 +90,8 @@ namespace Tic_Tac_Toe
 
         }
         private int? EvaluateBoard(GameCell[,] current)
-        { if (Is_win('x',current))
+        {
+            if (Is_win('x', current))
                 return -1;
             if (Is_win('o', current))
                 return +1;
@@ -89,23 +99,25 @@ namespace Tic_Tac_Toe
                 return 0;
             return null;
         }
-        private int AlphaBeta(GameCell[,] current,int alpha, int beta,bool player)
-        {   int? score =EvaluateBoard(current);
-            if(score.HasValue)
+        private int AlphaBeta(GameCell[,] current, int alpha, int beta, bool player)
+        {
+            int? score = EvaluateBoard(current);
+            if (score.HasValue)
                 return score.Value;
-            if(player)
+            if (player)
             {
                 int maxval = int.MinValue;
-                for(int i=0; i < 3;i++)
-                {   for(int j=0; j < 3; j++)
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
                     {
-                        if (current[i,j].Value==' ')
+                        if (current[i, j].Value == ' ')
                         {
                             current[i, j].Value = 'o';
-                            int eval=AlphaBeta(current, alpha,beta,false);
+                            int eval = AlphaBeta(current, alpha, beta, false);
                             current[i, j].Value = ' ';
-                            if(eval > maxval)
-                            maxval= eval;
+                            if (eval > maxval)
+                                maxval = eval;
                             if (eval > alpha)
                                 alpha = eval;
                             if (beta <= alpha)
@@ -119,14 +131,15 @@ namespace Tic_Tac_Toe
             }
             else
             {
-               int minval = int.MaxValue;
-                for(int i=0; i < 3; i++)
-                {   for(int j=0;j<3;j++)
+                int minval = int.MaxValue;
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
                     {
-                        if (current[i,j].Value==' ')
+                        if (current[i, j].Value == ' ')
                         {
-                            current[i,j].Value = 'x';
-                            int eval=AlphaBeta(current, alpha,beta,true);
+                            current[i, j].Value = 'x';
+                            int eval = AlphaBeta(current, alpha, beta, true);
                             current[i, j].Value = ' ';
                             if (eval < minval)
                                 minval = eval;
@@ -145,20 +158,21 @@ namespace Tic_Tac_Toe
 
             }
         }
-        
+
         private void Choose_Move()
         {
             int bestval = int.MinValue;
             Tuple<int, int> bestmove = Tuple.Create(-1, -1);
-            for(int i=0; i < 3;i++)
-            {   for(int j = 0; j < 3; j++)
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
                 {
-                    if (cells[i,j].Value==' ')
+                    if (cells[i, j].Value == ' ')
                     {
                         cells[i, j].Value = 'o';
-                        int moveval=AlphaBeta(cells,int.MinValue,int.MaxValue,false);
+                        int moveval = AlphaBeta(cells, int.MinValue, int.MaxValue, false);
                         cells[i, j].Value = ' ';
-                        if(moveval>bestval)
+                        if (moveval >= bestval)
                         {
                             bestmove = Tuple.Create(i, j);
                             bestval = moveval;
@@ -168,10 +182,34 @@ namespace Tic_Tac_Toe
                     }
 
                 }
-                
+
             }
             cells[bestmove.Item1, bestmove.Item2].Value = 'o';
-            cells[bestmove.Item1, bestmove.Item2].Text = 'o'.ToString() ;
+            cells[bestmove.Item1, bestmove.Item2].Text = 'o'.ToString();
+            int? result = EvaluateBoard(cells);
+            if (result == -1)
+            {
+                MessageBox.Show("You Won!");
+                return;
+            }
+            if (result == 1)
+            {
+                MessageBox.Show("You Lose!");
+                return;
+            }
+            if (result == 0)
+            {
+                MessageBox.Show("Tie");
+                return;
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Fill_Empty();
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    cells[i, j].Text = ' '.ToString();
         }
     }
 

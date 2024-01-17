@@ -31,9 +31,6 @@
             button10 = new Button();
             button11 = new Button();
             label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
             panel1 = new Panel();
             SuspendLayout();
             // 
@@ -45,6 +42,7 @@
             button10.TabIndex = 9;
             button10.Text = "Play Again";
             button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
             // 
             // button11
             // 
@@ -66,36 +64,6 @@
             label1.TabIndex = 11;
             label1.Text = "Your Symbol:X";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(763, 122);
-            label2.Name = "label2";
-            label2.Size = new Size(109, 28);
-            label2.TabIndex = 12;
-            label2.Text = "Player Turn";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(763, 163);
-            label3.Name = "label3";
-            label3.Size = new Size(144, 28);
-            label3.TabIndex = 13;
-            label3.Text = "Computer Turn";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(763, 81);
-            label4.Name = "label4";
-            label4.Size = new Size(63, 28);
-            label4.TabIndex = 14;
-            label4.Text = "Turns:";
-            // 
             // panel1
             // 
             panel1.Dock = DockStyle.Left;
@@ -110,9 +78,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(919, 722);
             Controls.Add(panel1);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button11);
             Controls.Add(button10);
@@ -127,9 +92,6 @@
         private Button button10;
         private Button button11;
         private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
         private Panel panel1;
     }
 }
