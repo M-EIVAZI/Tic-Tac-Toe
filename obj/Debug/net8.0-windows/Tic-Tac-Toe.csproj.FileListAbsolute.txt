@@ -3,7 +3,6 @@ D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net8.0-windows\Tic-T
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net8.0-windows\Tic-Tac-Toe.runtimeconfig.json
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net8.0-windows\Tic-Tac-Toe.dll
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net8.0-windows\Tic-Tac-Toe.pdb
-D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic_Tac_Toe.Form1.resources
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic-Tac-Toe.csproj.GenerateResource.cache
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic-Tac-Toe.GeneratedMSBuildEditorConfig.editorconfig
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic-Tac-Toe.AssemblyInfoInputs.cache
@@ -14,3 +13,4 @@ D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\refin
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic-Tac-Toe.pdb
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic-Tac-Toe.genruntimeconfig.cache
 D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\ref\Tic-Tac-Toe.dll
+D:\Programming\C#\Project\Tic-Tac-Toe\Tic-Tac-Toe\obj\Debug\net8.0-windows\Tic_Tac_Toe.MainForm.resources
