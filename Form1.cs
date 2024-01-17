@@ -9,9 +9,9 @@ namespace Tic_Tac_Toe
         }
         private char[,] cells = new char[3, 3];
         private void Fill_Empty()
-        {   for (int i = 0;i<3;i++) 
-                for(int j = 0;j<3;j++)
-                    cells[i,j] = ' ';
+        { for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    cells[i, j] = ' ';
 
         }
 
@@ -157,22 +157,22 @@ namespace Tic_Tac_Toe
         private bool Is_win(Char player)
         {
             int count = 0;
-            for(int i=0;i<3;i++) 
+            for (int i = 0; i < 3; i++)
             {
                 if ((cells[i, 0] == player && cells[i, 1] == player && cells[i, 2] == player) || (cells[0, i] == player && cells[1, i] == player && cells[2, i] == player))
                     return true;
             }
-            if ((cells[0, 0] == player && cells[1, 1] == player && cells[2,2]==player) || (cells[0,2]==player && cells[1,1]==player && cells[2,0]==player))
+            if ((cells[0, 0] == player && cells[1, 1] == player && cells[2, 2] == player) || (cells[0, 2] == player && cells[1, 1] == player && cells[2, 0] == player))
                 return true;
             return false;
         }
         private bool Is_full()
         {
-            for(int i = 0; i < 3; i++) 
+            for (int i = 0; i < 3; i++)
             {
-                for(int j= 0; j < 3;j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    if (cells[i,j]==' ')
+                    if (cells[i, j] == ' ')
                         return true;
                 }
             }
@@ -180,17 +180,27 @@ namespace Tic_Tac_Toe
 
         }
         private int? EvaluateBoard()
-        {   if (Is_win('X'))
+        { if (Is_win('X'))
                 return -1;
             if (Is_win('O'))
                 return +1;
             if (Is_full())
                 return 0;
             return null;
+        }
+        private int AlphaBeta(int depth,int alpha,int beta,bool player)
+        {
+            int? score = EvaluateBoard();
+            if(score != null)
+                return score.Value;
+            if(player)
+            {   
 
+            }
+            return -1;
         }
 
-     
+
     }
 
 }
