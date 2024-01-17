@@ -89,7 +89,60 @@ namespace Tic_Tac_Toe
                 return 0;
             return null;
         }
+        private int AlphaBeta(int alpha, int beta,bool player)
+        {   int? score =EvaluateBoard();
+            if(score.HasValue)
+                return score.Value;
+            if(player)
+            {
+                int maxval = int.MinValue;
+                for(int i=0; i < 3;i++)
+                {   for(int j=0; j < 3; j++)
+                    {
+                        if (cells[i,j].Value==' ')
+                        {
+                            cells[i, j].Value = 'o';
+                            cells[i, j].Text = 'o'.ToString();
+                            int eval=AlphaBeta(alpha,beta,false);
+                            cells[i, j].Value = ' ';
+                            cells[i, j].Text = ' '.ToString();
+                            maxval= Math.Max(maxval,eval);
+                            alpha=Math.Max(alpha,eval);
+                            if (beta <= alpha)
+                                break;
+                        }
 
+                    }
+
+                }
+                return maxval;
+            }
+            else
+            {
+                int minval = int.MaxValue;
+                for(int i=0; i < 3; i++)
+                {   for(int j=0;j<3;j++)
+                    {
+                        if (cells[i,j].Value==' ')
+                        {
+                            cells[i,j].Value = 'x';
+                            int val=AlphaBeta(alpha,beta,true);
+                            cells[i, j].Value = ' ';
+                            minval= Math.Min(minval,val);
+                            beta=Math.Min(beta,val);
+                            if (beta <= alpha)
+                                break;
+
+
+                        }
+
+                    }
+
+                }
+                return minval;
+
+            }
+        }
 
     }
 
