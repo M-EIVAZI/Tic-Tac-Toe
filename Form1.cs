@@ -55,42 +55,42 @@ namespace Tic_Tac_Toe
         {
             Choose_Move();
         }
-        private bool Is_win(Char player)
+        private bool Is_win(Char player, GameCell[,] current)
         {
-            int count = 0;
+           
             for (int i = 0; i < 3; i++)
             {
-                if ((cells[i, 0].Value == player && cells[i, 1].Value == player && cells[i, 2].Value == player) || (cells[0, i].Value == player && cells[1, i].Value == player && cells[2, i].Value == player))
+                if ((current[i, 0].Value == player && current[i, 1].Value == player && current[i, 2].Value == player) || (current[0, i].Value == player && current[1, i].Value == player && current[2, i].Value == player))
                     return true;
             }
-            if ((cells[0, 0].Value == player && cells[1, 1].Value == player && cells[2, 2].Value == player) || (cells[0, 2].Value == player && cells[1, 1].Value == player && cells[2, 0].Value == player))
+            if ((current[0, 0].Value == player && current[1, 1].Value == player && cells[2, 2].Value == player) || (current[0, 2].Value == player && current[1, 1].Value == player && current[2, 0].Value == player))
                 return true;
             return false;
         }
-        private bool Is_full()
+        private bool Is_full(GameCell[,] current)
         {
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (cells[i, j].Value == ' ')
-                        return true;
+                    if (current[i, j].Value == ' ')
+                        return false;
                 }
             }
-            return false;
+            return true;
 
         }
-        private int? EvaluateBoard()
-        { if (Is_win('x'))
+        private int? EvaluateBoard(GameCell[,] current)
+        { if (Is_win('x',current))
                 return -1;
-            if (Is_win('o'))
+            if (Is_win('o', current))
                 return +1;
-            if (Is_full())
+            if (Is_full(current))
                 return 0;
             return null;
         }
-        private int AlphaBeta(int alpha, int beta,bool player)
-        {   int? score =EvaluateBoard();
+        private int AlphaBeta(GameCell[,] current,int alpha, int beta,bool player)
+        {   int? score =EvaluateBoard(current);
             if(score.HasValue)
                 return score.Value;
             if(player)
@@ -99,13 +99,15 @@ namespace Tic_Tac_Toe
                 for(int i=0; i < 3;i++)
                 {   for(int j=0; j < 3; j++)
                     {
-                        if (cells[i,j].Value==' ')
+                        if (current[i,j].Value==' ')
                         {
-                            cells[i, j].Value = 'o';
-                            int eval=AlphaBeta(alpha,beta,false);
-                            cells[i, j].Value = ' ';
-                            maxval= Math.Max(maxval,eval);
-                            alpha=Math.Max(alpha,eval);
+                            current[i, j].Value = 'o';
+                            int eval=AlphaBeta(current, alpha,beta,false);
+                            current[i, j].Value = ' ';
+                            if(eval > maxval)
+                            maxval= eval;
+                            if (eval > alpha)
+                                alpha = eval;
                             if (beta <= alpha)
                                 break;
                         }
@@ -117,17 +119,19 @@ namespace Tic_Tac_Toe
             }
             else
             {
-                int minval = int.MaxValue;
+               int minval = int.MaxValue;
                 for(int i=0; i < 3; i++)
                 {   for(int j=0;j<3;j++)
                     {
-                        if (cells[i,j].Value==' ')
+                        if (current[i,j].Value==' ')
                         {
-                            cells[i,j].Value = 'x';
-                            int val=AlphaBeta(alpha,beta,true);
-                            cells[i, j].Value = ' ';
-                            minval= Math.Min(minval,val);
-                            beta=Math.Min(beta,val);
+                            current[i,j].Value = 'x';
+                            int eval=AlphaBeta(current, alpha,beta,true);
+                            current[i, j].Value = ' ';
+                            if (eval < minval)
+                                minval = eval;
+                            if (eval < alpha)
+                                alpha = eval;
                             if (beta <= alpha)
                                 break;
 
@@ -144,7 +148,7 @@ namespace Tic_Tac_Toe
         
         private void Choose_Move()
         {
-            int bestval = int.MaxValue;
+            int bestval = int.MinValue;
             Tuple<int, int> bestmove = Tuple.Create(-1, -1);
             for(int i=0; i < 3;i++)
             {   for(int j = 0; j < 3; j++)
@@ -152,9 +156,9 @@ namespace Tic_Tac_Toe
                     if (cells[i,j].Value==' ')
                     {
                         cells[i, j].Value = 'o';
-                        int moveval=AlphaBeta(int.MinValue,int.MaxValue,false);
+                        int moveval=AlphaBeta(cells,int.MinValue,int.MaxValue,false);
                         cells[i, j].Value = ' ';
-                        if(moveval<bestval)
+                        if(moveval>bestval)
                         {
                             bestmove = Tuple.Create(i, j);
                             bestval = moveval;
