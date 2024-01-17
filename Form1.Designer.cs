@@ -38,6 +38,11 @@
             button8 = new Button();
             button9 = new Button();
             button10 = new Button();
+            button11 = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -50,7 +55,7 @@
             button1.Size = new Size(220, 220);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = false;
-            button1.KeyPress += Key_Pressed;
+            button1.KeyPress += button1_KeyPress;
             // 
             // button2
             // 
@@ -62,7 +67,7 @@
             button2.Size = new Size(220, 220);
             button2.TabIndex = 1;
             button2.UseVisualStyleBackColor = false;
-            button2.KeyPress += Key_Pressed;
+            button2.KeyPress += button2_KeyPress;
             // 
             // button3
             // 
@@ -74,7 +79,7 @@
             button3.Size = new Size(220, 220);
             button3.TabIndex = 2;
             button3.UseVisualStyleBackColor = false;
-            button3.KeyPress += Key_Pressed;
+            button3.KeyPress += button3_KeyPress;
             // 
             // button4
             // 
@@ -86,7 +91,7 @@
             button4.Size = new Size(220, 220);
             button4.TabIndex = 3;
             button4.UseVisualStyleBackColor = false;
-            button4.KeyPress += Key_Pressed;
+            button4.KeyPress += button4_KeyPress;
             // 
             // button5
             // 
@@ -98,7 +103,7 @@
             button5.Size = new Size(220, 220);
             button5.TabIndex = 4;
             button5.UseVisualStyleBackColor = false;
-            button5.KeyPress += Key_Pressed;
+            button5.KeyPress += button5_KeyPress;
             // 
             // button6
             // 
@@ -110,7 +115,7 @@
             button6.Size = new Size(220, 220);
             button6.TabIndex = 5;
             button6.UseVisualStyleBackColor = false;
-            button6.KeyPress += Key_Pressed;
+            button6.KeyPress += button6_KeyPress;
             // 
             // button7
             // 
@@ -122,7 +127,7 @@
             button7.Size = new Size(220, 220);
             button7.TabIndex = 6;
             button7.UseVisualStyleBackColor = false;
-            button7.KeyPress += Key_Pressed;
+            button7.KeyPress += button7_KeyPress;
             // 
             // button8
             // 
@@ -134,7 +139,7 @@
             button8.Size = new Size(220, 220);
             button8.TabIndex = 7;
             button8.UseVisualStyleBackColor = false;
-            button8.KeyPress += Key_Pressed;
+            button8.KeyPress += button8_KeyPress;
             // 
             // button9
             // 
@@ -146,22 +151,77 @@
             button9.Size = new Size(220, 220);
             button9.TabIndex = 8;
             button9.UseVisualStyleBackColor = false;
-            button9.KeyPress += Key_Pressed;
+            button9.KeyPress += button9_KeyPress;
             // 
             // button10
             // 
-            button10.Location = new Point(678, 588);
+            button10.Location = new Point(686, 588);
             button10.Name = "button10";
             button10.Size = new Size(122, 73);
             button10.TabIndex = 9;
             button10.Text = "Play Again";
             button10.UseVisualStyleBackColor = true;
             // 
+            // button11
+            // 
+            button11.Location = new Point(686, 493);
+            button11.Name = "button11";
+            button11.Size = new Size(122, 73);
+            button11.TabIndex = 10;
+            button11.Text = "Start Game";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(678, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(138, 28);
+            label1.TabIndex = 11;
+            label1.Text = "Your Symbol:X";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(678, 114);
+            label2.Name = "label2";
+            label2.Size = new Size(109, 28);
+            label2.TabIndex = 12;
+            label2.Text = "Player Turn";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(678, 152);
+            label3.Name = "label3";
+            label3.Size = new Size(144, 28);
+            label3.TabIndex = 13;
+            label3.Text = "Computer Turn";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(678, 74);
+            label4.Name = "label4";
+            label4.Size = new Size(63, 28);
+            label4.TabIndex = 14;
+            label4.Text = "Turns:";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(817, 673);
+            ClientSize = new Size(820, 673);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(button11);
             Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -176,6 +236,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tic-Tac-Toe";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -190,5 +251,10 @@
         private Button button8;
         private Button button9;
         private Button button10;
+        private Button button11;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }
