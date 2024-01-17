@@ -188,17 +188,6 @@ namespace Tic_Tac_Toe
                 return 0;
             return null;
         }
-        private int AlphaBeta(int depth,int alpha,int beta,bool player)
-        {
-            int? score = EvaluateBoard();
-            if(score != null)
-                return score.Value;
-            if(player)
-            {   
-
-            }
-            return -1;
-        }
 
 
     }
