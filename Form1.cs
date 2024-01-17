@@ -5,16 +5,52 @@ namespace Tic_Tac_Toe
         public MainForm()
         {
             InitializeComponent();
-            Fill_Empty();
+            Create_Cell();
+            //Fill_Empty();
         }
-        private char[,] cells = new char[3, 3];
+        private GameCell[,] cells = new GameCell[3, 3];
         private void Fill_Empty()
         { for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
-                    cells[i, j] = ' ';
+                    cells[i, j].Value = ' ';
 
         }
+        private void Create_Cell()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cells[i, j] = new GameCell();
+                    cells[i, j].Font = new Font(SystemFonts.DefaultFont.FontFamily, 20);
+                    cells[i, j].Size = new Size(240, 240);
+                    cells[i, j].ForeColor = Color.DarkBlue;
+                    cells[i, j].Location = new Point(i * 240, j * 240);
+                    cells[i, j].FlatStyle = FlatStyle.Flat;
+                    cells[i, j].FlatAppearance.BorderColor = Color.Black;
+                    cells[i, j].X = i;
+                    cells[i, j].Y = j;
 
+                    // Assign key press event for each cells
+                    cells[i, j].KeyPress += cell_keyPressed;
+
+                    panel1.Controls.Add(cells[i, j]);
+                }
+            }
+            Fill_Empty();
+        }
+        private void cell_keyPressed(object sender, KeyPressEventArgs e) 
+        {
+            var cell = sender as GameCell;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 'X')
+            {
+
+                cell.ForeColor = Color.DarkBlue;
+                cell.Value = e.KeyChar;
+                cell.Text = e.KeyChar.ToString();
+
+            }
+        }
         private void button1_KeyPress(object sender, KeyPressEventArgs e)
         {
             var cell = sender as Button;
@@ -25,7 +61,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[0, 0] = 'X';
+                cells[0, 0].Value = 'X';
 
             }
         }
@@ -40,7 +76,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[1, 0] = 'X';
+                cells[1, 0].Value = 'X';
 
             }
         }
@@ -55,7 +91,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[2, 0] = 'X';
+                cells[2, 0].Value = 'X';
 
             }
         }
@@ -70,7 +106,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[0, 1] = 'X';
+                cells[0, 1].Value = 'X';
 
             }
         }
@@ -85,7 +121,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[0, 2] = 'X';
+                cells[0, 2].Value = 'X';
 
             }
         }
@@ -100,7 +136,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[1, 1] = 'X';
+                cells[1, 1].Value = 'X';
 
             }
         }
@@ -115,7 +151,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[1, 2] = 'X';
+                cells[1, 2].Value = 'X';
 
             }
         }
@@ -130,7 +166,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[2, 1] = 'X';
+                cells[2, 1].Value = 'X';
 
             }
         }
@@ -145,7 +181,7 @@ namespace Tic_Tac_Toe
 
                 cell.ForeColor = Color.DarkBlue;
                 cell.Text = e.KeyChar.ToString();
-                cells[2, 2] = 'X';
+                cells[2, 2].Value = 'X';
 
             }
         }
@@ -159,10 +195,10 @@ namespace Tic_Tac_Toe
             int count = 0;
             for (int i = 0; i < 3; i++)
             {
-                if ((cells[i, 0] == player && cells[i, 1] == player && cells[i, 2] == player) || (cells[0, i] == player && cells[1, i] == player && cells[2, i] == player))
+                if ((cells[i, 0].Value == player && cells[i, 1].Value == player && cells[i, 2].Value == player) || (cells[0, i].Value == player && cells[1, i].Value == player && cells[2, i].Value == player))
                     return true;
             }
-            if ((cells[0, 0] == player && cells[1, 1] == player && cells[2, 2] == player) || (cells[0, 2] == player && cells[1, 1] == player && cells[2, 0] == player))
+            if ((cells[0, 0].Value == player && cells[1, 1].Value == player && cells[2, 2].Value == player) || (cells[0, 2].Value == player && cells[1, 1].Value == player && cells[2, 0].Value == player))
                 return true;
             return false;
         }
@@ -172,7 +208,7 @@ namespace Tic_Tac_Toe
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (cells[i, j] == ' ')
+                    if (cells[i, j].Value == ' ')
                         return true;
                 }
             }
