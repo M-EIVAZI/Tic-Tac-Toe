@@ -52,7 +52,7 @@
             button11.Name = "button11";
             button11.Size = new Size(122, 73);
             button11.TabIndex = 10;
-            button11.Text = "Start Game";
+            button11.Text = "Done move";
             button11.UseVisualStyleBackColor = true;
             button11.Click += button11_Click;
             // 

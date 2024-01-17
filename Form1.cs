@@ -53,7 +53,7 @@ namespace Tic_Tac_Toe
         }
         private void button11_Click(object sender, EventArgs e)
         {
-
+            Choose_Move();
         }
         private bool Is_win(Char player)
         {
@@ -143,7 +143,34 @@ namespace Tic_Tac_Toe
 
             }
         }
+        
+        private void Choose_Move()
+        {
+            int bestval = int.MaxValue;
+            Tuple<int, int> bestmove = Tuple.Create(-1, -1);
+            for(int i=0; i < 3;i++)
+            {   for(int j = 0; j < 3; j++)
+                {
+                    if (cells[i,j].Value==' ')
+                    {
+                        cells[i, j].Value = 'o';
+                        int moveval=AlphaBeta(int.MinValue,int.MaxValue,false);
+                        cells[i, j].Value = ' ';
+                        if(moveval<bestval)
+                        {
+                            bestmove = Tuple.Create(i, j);
+                            bestval = moveval;
 
+                        }
+
+                    }
+
+                }
+                
+            }
+            cells[bestmove.Item1, bestmove.Item2].Value = 'o';
+            cells[bestmove.Item1, bestmove.Item2].Text = 'o'.ToString() ;
+        }
     }
 
 }
