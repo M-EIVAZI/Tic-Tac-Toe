@@ -42,7 +42,7 @@ namespace Tic_Tac_Toe
         private void cell_keyPressed(object sender, KeyPressEventArgs e) 
         {
             var cell = sender as GameCell;
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 'X')
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar == 'x')
             {
 
                 cell.ForeColor = Color.DarkBlue;
@@ -81,9 +81,9 @@ namespace Tic_Tac_Toe
 
         }
         private int? EvaluateBoard()
-        { if (Is_win('X'))
+        { if (Is_win('x'))
                 return -1;
-            if (Is_win('O'))
+            if (Is_win('o'))
                 return +1;
             if (Is_full())
                 return 0;
