@@ -37,94 +37,132 @@
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
+            button10 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
+            button1.BackColor = Color.Gainsboro;
+            button1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button1.ForeColor = Color.Red;
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(220, 220);
             button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
+            button1.KeyPress += Key_Pressed;
             // 
             // button2
             // 
+            button2.BackColor = Color.Gainsboro;
+            button2.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button2.ForeColor = Color.Red;
             button2.Location = new Point(0, 226);
             button2.Name = "button2";
             button2.Size = new Size(220, 220);
             button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
+            button2.KeyPress += Key_Pressed;
             // 
             // button3
             // 
+            button3.BackColor = Color.Gainsboro;
+            button3.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button3.ForeColor = Color.Red;
             button3.Location = new Point(0, 452);
             button3.Name = "button3";
             button3.Size = new Size(220, 220);
             button3.TabIndex = 2;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
+            button3.KeyPress += Key_Pressed;
             // 
             // button4
             // 
+            button4.BackColor = Color.Gainsboro;
+            button4.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button4.ForeColor = Color.Red;
             button4.Location = new Point(226, 0);
             button4.Name = "button4";
             button4.Size = new Size(220, 220);
             button4.TabIndex = 3;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
+            button4.KeyPress += Key_Pressed;
             // 
             // button5
             // 
+            button5.BackColor = Color.Gainsboro;
+            button5.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button5.ForeColor = Color.Red;
             button5.Location = new Point(226, 226);
             button5.Name = "button5";
             button5.Size = new Size(220, 220);
             button5.TabIndex = 4;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
+            button5.KeyPress += Key_Pressed;
             // 
             // button6
             // 
+            button6.BackColor = Color.Gainsboro;
+            button6.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button6.ForeColor = Color.Red;
             button6.Location = new Point(226, 452);
             button6.Name = "button6";
             button6.Size = new Size(220, 220);
             button6.TabIndex = 5;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
+            button6.KeyPress += Key_Pressed;
             // 
             // button7
             // 
+            button7.BackColor = Color.Gainsboro;
+            button7.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button7.ForeColor = Color.Red;
             button7.Location = new Point(452, 0);
             button7.Name = "button7";
             button7.Size = new Size(220, 220);
             button7.TabIndex = 6;
-            button7.Text = "button7";
-            button7.UseVisualStyleBackColor = true;
+            button7.UseVisualStyleBackColor = false;
+            button7.KeyPress += Key_Pressed;
             // 
             // button8
             // 
+            button8.BackColor = Color.Gainsboro;
+            button8.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button8.ForeColor = Color.Red;
             button8.Location = new Point(452, 226);
             button8.Name = "button8";
             button8.Size = new Size(220, 220);
             button8.TabIndex = 7;
-            button8.Text = "button8";
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
+            button8.KeyPress += Key_Pressed;
             // 
             // button9
             // 
+            button9.BackColor = Color.Gainsboro;
+            button9.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            button9.ForeColor = Color.Red;
             button9.Location = new Point(452, 452);
             button9.Name = "button9";
             button9.Size = new Size(220, 220);
             button9.TabIndex = 8;
-            button9.Text = "button9";
-            button9.UseVisualStyleBackColor = true;
+            button9.UseVisualStyleBackColor = false;
+            button9.KeyPress += Key_Pressed;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(678, 588);
+            button10.Name = "button10";
+            button10.Size = new Size(122, 73);
+            button10.TabIndex = 9;
+            button10.Text = "Play Again";
+            button10.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(983, 673);
+            ClientSize = new Size(817, 673);
+            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -151,5 +189,6 @@
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button button10;
     }
 }
