@@ -102,10 +102,8 @@ namespace Tic_Tac_Toe
                         if (cells[i,j].Value==' ')
                         {
                             cells[i, j].Value = 'o';
-                            cells[i, j].Text = 'o'.ToString();
                             int eval=AlphaBeta(alpha,beta,false);
                             cells[i, j].Value = ' ';
-                            cells[i, j].Text = ' '.ToString();
                             maxval= Math.Max(maxval,eval);
                             alpha=Math.Max(alpha,eval);
                             if (beta <= alpha)
