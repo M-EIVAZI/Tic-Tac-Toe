@@ -6,7 +6,6 @@ namespace Tic_Tac_Toe
         {
             InitializeComponent();
             Create_Cell();
-            //Fill_Empty();
         }
         private GameCell[,] cells = new GameCell[3, 3];
         private void Fill_Empty()
@@ -31,8 +30,6 @@ namespace Tic_Tac_Toe
                     cells[i, j].FlatAppearance.BorderColor = Color.Black;
                     cells[i, j].X = i;
                     cells[i, j].Y = j;
-
-                    // Assign key press event for each cells
                     cells[i, j].KeyPress += cell_keyPressed;
 
                     panel1.Controls.Add(cells[i, j]);
@@ -54,14 +51,22 @@ namespace Tic_Tac_Toe
         }
         private void button11_Click(object sender, EventArgs e)
         {
+            if (Is_full(cells))
+            {
+                MessageBox.Show("Tie");
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        cells[i, j].Value = ' ';
+                        cells[i, j].Text = "";
+
+                    }
+
+                }
+                return;
+            }
             Choose_Move();
-            //int? result = EvaluateBoard(cells);
-            //if (result == -1)
-            //    MessageBox.Show("You Won!");
-            //if (result == 1)
-            //    MessageBox.Show("You Lose!");
-            //if (result == 0)
-            //    MessageBox.Show("Tie");
 
         }
         private bool Is_win(Char player, GameCell[,] current)
@@ -190,11 +195,31 @@ namespace Tic_Tac_Toe
             if (result == -1)
             {
                 MessageBox.Show("You Won!");
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        cells[i, j].Value = ' ';
+                        cells[i, j].Text = "";
+
+                    }
+
+                }
                 return;
             }
             if (result == 1)
             {
                 MessageBox.Show("You Lose!");
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        cells[i, j].Value = ' ';
+                        cells[i, j].Text = "";
+
+                    }
+
+                }
                 return;
             }
             if (result == 0)
@@ -210,6 +235,11 @@ namespace Tic_Tac_Toe
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
                     cells[i, j].Text = ' '.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
